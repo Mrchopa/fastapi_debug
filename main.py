@@ -27,7 +27,7 @@ def _get_coroutine_stack_trace(task):
         await_line_number = frame.f_lineno
 
         linecache.checkcache(coro_filename)
-        line = linecache.getline(coro_filename, await_line_number, frame.f_globals)
+        line = linecache.getline(coro_filename, await_line_number, frame.f_globals).strip()
 
         extracted_list.append((coro_filename, await_line_number, coro_name, line))
 
